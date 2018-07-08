@@ -1,7 +1,8 @@
 #include <rose/bitmap.hpp>
 
 using rose::Bitmap;
+using rose::bitmap::Fmt;
 
 int main() {
-  Bitmap bitmap = {Bitmap::Format::RGB, 1024, 512, nullptr};
+  Bitmap<Fmt::RGB> bitmap = {1024, 512, nullptr};
 }
