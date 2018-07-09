@@ -11,21 +11,23 @@ namespace rose {
       RGB,
       RGBA
     };
+  }
 
-    template<Fmt FMT>
+  namespace detail {
+    template<bitmap::Fmt FMT>
     constexpr size_t channels() noexcept {
-      static_assert(FMT == Fmt::RGB,
+      static_assert(FMT == bitmap::Fmt::RGB,
       "A specialization of channels is required for this format");
       return 3;
     }
 
     template<>
-    constexpr size_t channels<Fmt::RGB>() noexcept {
+    constexpr size_t channels<bitmap::Fmt::RGB>() noexcept {
       return 3;
     }
 
     template<>
-    constexpr size_t channels<Fmt::RGBA>() noexcept {
+    constexpr size_t channels<bitmap::Fmt::RGBA>() noexcept {
       return 4;
     }
   }
@@ -50,6 +52,10 @@ namespace rose {
 
     uint8_t* data() const noexcept {
       return d;
+    }
+
+    static constexpr size_t channels() {
+      return detail::channels<FMT>();
     }
 
   };

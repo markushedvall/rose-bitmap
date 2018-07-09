@@ -32,6 +32,6 @@ TEST(Bitmap, format) {
 }
 
 TEST(Bitmap, channels) {
-  EXPECT_TRUE(rose::bitmap::channels<Fmt::RGB>() == 3);
-  EXPECT_TRUE(rose::bitmap::channels<Fmt::RGBA>() == 4);
+  EXPECT_TRUE(Bitmap<Fmt::RGB>::channels() == 3);
+  EXPECT_TRUE(Bitmap<Fmt::RGBA>::channels() == 4);
 }
